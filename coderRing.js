@@ -35,7 +35,7 @@ var letterTest = function(ltrTst) {
         return false;
     }
     
-}
+};
 
 //Changes the letter
 
@@ -44,7 +44,7 @@ var coderRing = function(oldLtr, shft){
 	var newLtr = "";
 //account for negative shift values
 	var vShft = (shft < 0 ? shft+vowels.length : shft);
-	
+	var cShft = (shft < 0 ? shft+consonants.length : shft);
 	
 	if (vowelTest(oldLtr) === true) {
 	    if ((vowels.indexOf(oldLtr) + vShft) <= vowels.length - 1) {
@@ -58,11 +58,11 @@ var coderRing = function(oldLtr, shft){
 	
 	else {
 	    //accounts for shift values that excede the length of the consonant array
-	    if (consonants.indexOf(oldLtr) + shft > consonants.length) {
-    		newLtr = consonants[consonants.indexOf(oldLtr) + shft - consonants.length];
+	    if (consonants.indexOf(oldLtr) + cShft > consonants.length) {
+    		newLtr = consonants[consonants.indexOf(oldLtr) + cShft - consonants.length];
 	    }
 	    else {
-		    newLtr = consonants[consonants.indexOf(oldLtr) + shft];
+		    newLtr = consonants[consonants.indexOf(oldLtr) + cShft];
 	    }
 	}
 	return newLtr;
