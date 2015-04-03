@@ -16,6 +16,27 @@ var vowelTest = function(ltr) {
 	}
 };
 
+var consonantsTest = function(cLtr) {
+    for (var k = 0; k <= consonants.length - 1; k++) {
+	if (cLtr === consonants[k]) {
+		    return true;
+		}
+	}
+};
+
+var letterTest = function(ltrTst) {
+    if (vowelTest(ltrTst)===true) {
+        return true;
+    }
+    else if (consonantsTest(ltrTst)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    
+}
+
 //Changes the letter
 
 var coderRing = function(oldLtr, shft){
@@ -45,8 +66,8 @@ var secretWord = function(msg, shft) {
 	var newMsg = "";
 	var oldMsg = msg.toLowerCase();
 	for (var i = 0; i <= oldMsg.length - 1; i++) {
-	        if (oldMsg.charAt(i) === " ") {
-	            newMsg = newMsg + " ";
+	        if (letterTest(oldMsg.charAt(i)) === false) {
+	            newMsg = newMsg + oldMsg.charAt(i);
 	        }
 
 	        else {
@@ -59,3 +80,4 @@ var secretWord = function(msg, shft) {
 
 console.log(secretWord("Yes", 2));
 console.log(secretWord("I am Kit", -1));
+console.log(secretWord("Who are you?", -2))
