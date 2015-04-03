@@ -57,7 +57,13 @@ var coderRing = function(oldLtr, shft){
 	}
 	
 	else {
-		newLtr = consonants[consonants.indexOf(oldLtr) + shft];
+	    //accounts for shift values that excede the length of the consonant array
+	    if (consonants.indexOf(oldLtr) + shft > consonants.length) {
+    		newLtr = consonants[consonants.indexOf(oldLtr) + shft - consonants.length];
+	    }
+	    else {
+		    newLtr = consonants[consonants.indexOf(oldLtr) + shft];
+	    }
 	}
 	return newLtr;
 };
@@ -78,6 +84,6 @@ var secretWord = function(msg, shft) {
 	return newMsg;
 };
 
-console.log(secretWord("Yes", 2));
+console.log(secretWord("Yes, I'm a Zebra", 2));
 console.log(secretWord("I am Kit", -1));
-console.log(secretWord("Who are you?", -2))
+console.log(secretWord("Who are you? b", -2))
